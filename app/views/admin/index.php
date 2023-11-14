@@ -37,43 +37,43 @@
             <div class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10"></div>
                 <div class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
                     <div>
-                        <form action="" class='p-2' onSubmit={handleSubmit}>
+                        <form action="<?= BASEURL ?>/admin/tambah" method="POST" class='p-2'>
                         <div class='flex mt-2 justify-between'> 
                             <div class='px-2'>
                                 <p class='text-lg font-medium'>Nama Mentor</p>
-                                <input value={namamentor} onChange="" placeholder='Altamis Fattah Atmaja, S.Kom., M.Kom.' required type="text" class='border w-56 rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
+                                <input name="nama_mentor"  onChange="" placeholder='Altamis Fattah Atmaja, S.Kom., M.Kom.' required type="text" class='border w-56 rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
                             </div>
                             <div class='px-2'>
                                 <p class='text-lg font-medium'>Spesialisasi Keilmuwan</p>
-                                <input value={spesialisasi} onChange="" placeholder='IT' required type="text" class='border w-56 rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
+                                <input name="spesialisasi"  onChange="" placeholder='IT' required type="text" class='border w-56 rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
                             </div>
                             <div class='px-2'>
                                 <p class='text-lg font-medium'>Fee Mentoring</p>
-                                <input value={fee} onChange="" required type="text" placeholder='35000' class='border w-56 rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
+                                <input name="fee"  onChange="" required type="text" placeholder='35000' class='border w-56 rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
                             </div>
                             <div class='px-2'>
                                 <p class='text-lg font-medium'>Minat Penelitian</p>
-                                <input value={minatpenelitian} onChange="" placeholder='Software Engineering' required type="text" class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
+                                <input name="minat_penelitian"  onChange="" placeholder='Software Engineering' required type="text" class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
                             </div>                            
                         </div>
                         <div class='px-2 mb-5'>
                             <p class='text-lg font-medium'>Sertifikasi</p>
-                            <input value={sertifikasi} onChange="" placeholder='Dicoding Laos Academy, Informatika Universitas Jember, dan BuildWithAngga' required type="text" class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
+                            <input name="sertifikasi"  onChange="" placeholder='Dicoding Laos Academy, Informatika Universitas Jember, dan BuildWithAngga' required type="text" class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
                         </div>
                         <div class='flex mt-2 justify-between gap-1'> 
                             <div class='px-2 w-1/2'>
                                 <p class='text-lg font-medium'>Jadwal</p>
-                                <input required value={jadwal} onChange="" placeholder='Jumat, 25 Oktober 2023 / 10.00 - 11.00 WIB' type="text" class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
+                                <input name="jadwal"  onChange="" placeholder='Jumat, 25 Oktober 2023 / 10.00 - 11.00 WIB' type="text" class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
                             </div>                    
                             <div class='px-2 w-1/2'>
                                 <p class='text-lg font-medium'>Tempat Mentoring</p>
-                                <input required value={tempat} onChange="" type="text" placeholder="https://unej-id.zoom.us/j/94642770465#success" class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
+                                <input name="tempat"  onChange="" type="text" placeholder="https://unej-id.zoom.us/j/94642770465#success" class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
                             </div>                            
                         </div>
                         <div class='flex mt-2 justify-between mb-4'> 
                             <div class='px-2 w-full'>
                                 <p class='text-lg font-medium'>Judul Mentoring</p>
-                                <input required value={judulmentoring} onChange="" type="text" placeholder="Masukkan judul mentoring..." class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
+                                <input name="judul" required onChange="" type="text" placeholder="Masukkan judul mentoring..." class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
                             </div>
                         </div>
                         <div class="w-full px-2 mx-auto mt-5">
@@ -123,7 +123,7 @@
                             </div>
                             <div class="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">
                                 <label for="editor" class="sr-only">Publish post</label>
-                                <textarea value={deskripsimentor} onChange="" id="editor" rows="8" class="block px-0 w-full text-sm text-gray-800 font-medium bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Masukkan deskripsi mentor..." required></textarea>
+                                <input name="deskripsi" onChange="" id="editor" rows="8" class="block px-0 w-full text-sm text-gray-800 font-medium bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Masukkan deskripsi mentor..." required></input>
                             </div>
                             </div>
                             <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
@@ -175,7 +175,7 @@
                             </div>
                             <div class="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">
                                 <label for="editor" class="sr-only">Publish post</label>
-                                <textarea value={pendidikan} id="editor" rows="8" class="block px-0 w-full text-sm text-gray-800 font-medium bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Masukkan pendidikan mentor..." required></textarea>
+                                <textarea name="pendidikan"  id="editor" rows="8" class="block px-0 w-full text-sm text-gray-800 font-medium bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Masukkan pendidikan mentor..." required></textarea>
                             </div>
                             </div>
                             <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
@@ -227,7 +227,7 @@
                             </div>
                             <div class="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">
                                 <label for="editor" class="sr-only">Publish post</label>
-                                <textarea value={hasilpenelitian} onChange="" id="editor" rows="8" class="block px-0 w-full text-sm font-medium text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Masukkan hasil penelitian mentor..." required></textarea>
+                                <textarea name="hasil_penelitian" onChange="" id="editor" rows="8" class="block px-0 w-full text-sm font-medium text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Masukkan hasil penelitian mentor..." required></textarea>
                             </div>
                             </div>
                             <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>

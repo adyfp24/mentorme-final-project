@@ -2,7 +2,8 @@
 
 class Mentoring extends Controller{
     public function index(){
-        $this->view('templates/header');
+        $data['judul'] = 'Mentoring';
+        $this->view('templates/header',$data);
         $this->view('mentoring/index');
         $this->view('templates/footer');
     }

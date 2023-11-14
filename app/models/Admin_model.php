@@ -18,10 +18,33 @@ class Admin_model{
 
         return $mentor;
     }
-    public function masukkanDataMentor()
+
+    public function tambahDataMentor($nama_mentor, $hasil_penelitian, $minat_penelitian, $fee, $jadwal, $pendidikan, $sertifikasi, $deskripsi, $tempat, $spesialisasi, $judul)
     {
-        global $conn;
-        
+        global $conn;  // Saring penggunaan variabel global dan gunakan koneksi yang telah dibuat
+    
+        // Perbaikan query SQL dan penggunaan koneksi
+        $sql = "INSERT INTO mentor (nama_mentor, hasil_penelitian, minat_penelitian, fee, jadwal, pendidikan, sertifikasi, deskripsi, tempat, spesialisasi, judul)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+        $stmt = $conn->prepare($sql);
+    
+        // Bind parameter dengan tipe data yang sesuai
+        $stmt->bind_param("sssssssssss", $nama_mentor, $hasil_penelitian, $minat_penelitian, $fee, $jadwal, $pendidikan, $sertifikasi, $deskripsi, $tempat, $spesialisasi, $judul);
+    
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else {
+            $stmt->close();
+            return false;
+        }
     }
+    
+        // echo $nama_mentor.'<br>';
+        // echo $hasil_penelitian;
+    
+
+    
  
 }
