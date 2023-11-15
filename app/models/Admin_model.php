@@ -21,15 +21,13 @@ class Admin_model{
 
     public function tambahDataMentor($nama_mentor, $hasil_penelitian, $minat_penelitian, $fee, $jadwal, $pendidikan, $sertifikasi, $deskripsi, $tempat, $spesialisasi, $judul)
     {
-        global $conn;  // Saring penggunaan variabel global dan gunakan koneksi yang telah dibuat
+        global $conn;  
     
-        // Perbaikan query SQL dan penggunaan koneksi
         $sql = "INSERT INTO mentor (nama_mentor, hasil_penelitian, minat_penelitian, fee, jadwal, pendidikan, sertifikasi, deskripsi, tempat, spesialisasi, judul)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
         $stmt = $conn->prepare($sql);
     
-        // Bind parameter dengan tipe data yang sesuai
         $stmt->bind_param("sssssssssss", $nama_mentor, $hasil_penelitian, $minat_penelitian, $fee, $jadwal, $pendidikan, $sertifikasi, $deskripsi, $tempat, $spesialisasi, $judul);
     
         if ($stmt->execute()) {
@@ -40,11 +38,34 @@ class Admin_model{
             return false;
         }
     }
-    
-        // echo $nama_mentor.'<br>';
-        // echo $hasil_penelitian;
-    
+    public function hapusDataMentor($id_mentor)
+    {
+        global $conn;
 
-    
- 
+        try {
+            $sql = "DELETE FROM mentor WHERE id_mentor = ?";
+            $stmt = $conn->prepare($sql);
+            
+            if (!$stmt) {
+                throw new Exception("Error in SQL statement preparation");
+            }
+
+            $stmt->bind_param("i", $id_mentor);
+
+            if ($stmt->execute()) {
+                $stmt->close();
+                return true;
+            } else {
+                $stmt->close();
+                return false;
+            }
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    public function editDataMentor()
+    {
+
+    }
+
 }

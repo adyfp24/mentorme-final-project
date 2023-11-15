@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <title> <?= $data['judul']; ?></title>
 </head>
 <body>
@@ -123,7 +124,7 @@
                             </div>
                             <div class="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">
                                 <label for="editor" class="sr-only">Publish post</label>
-                                <input name="deskripsi" onChange="" id="editor" rows="8" class="block px-0 w-full text-sm text-gray-800 font-medium bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Masukkan deskripsi mentor..." required></input>
+                                <textarea name="deskripsi" onChange="" id="editor" rows="8" class="block px-0 w-full text-sm text-gray-800 font-medium bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Masukkan deskripsi mentor..." required></textarea>
                             </div>
                             </div>
                             <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
@@ -257,6 +258,7 @@
                     <tr key={id} class="hover:bg-gray-50">
                         <th class="px-6 py-4">
                         <div class="text-sm">
+
                             <div class="mb-2 text-blue-700 font-bold flex justify-center text-center"><?= $mentor['nama_mentor'] ?></div>
                             <div class="text-blue-700 justify-center mb-2 flex">"<?= $mentor['spesialisasi'] ?></div>
                             <div class="text-gray-400 bg-violet-50 p-2 text-center rounded-lg mb-2"><?= $mentor['pendidikan'] ?></div>
@@ -287,25 +289,29 @@
                         </td>
                         <td class="px-6 py-4">
                         <div class="flex gap-4">
-                            <button onClick="">
-                            <a x-data="{ tooltip: 'Delete' }" href="#">
-                                <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="h-6 w-6"
-                                x-tooltip="tooltip"
-                                >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                                />
-                                </svg>
-                            </a>
-                            </button>
+
+                            <form action="<?= BASEURL ?>/admin/hapus" method="POST">
+                                <input type="hidden" name="id_mentor" value="<?= $mentor['id_mentor'] ?>">
+                                <button onClick="">
+                                    <a x-data="{ tooltip: 'Delete' }" href="">
+                                        <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        class="h-6 w-6"
+                                        x-tooltip="tooltip"
+                                        >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                                        />
+                                        </svg>
+                                    </a>
+                                </button>
+                            </form>
                         
                             <button>
                                 <a x-data="{ tooltip: 'Edit' }" href="#">
@@ -331,13 +337,32 @@
                         </td>
                     </tr>
                     <?php endforeach ?>     
-                    <!-- ))} -->
                     </tbody>
                 </table>
                 </div>
-        <DashboardFooter/>
             </div>
         </div>
     </div>
+
+
+<!-- <script>
+$(document).ready(function(){
+    $(".hapus-button").click(function(){
+        var id_mentor = $(this).data("id_mentor");
+
+        $.ajax({
+            type: "POST",
+            url: "url_ke_controller_anda/hapus", // Sesuaikan dengan URL controller Anda
+            data: {id_mentor: id_mentor},
+            success: function(response){
+                // Perbarui tampilan tanpa mereload halaman
+                // Misalnya, jika Anda memiliki daftar mentor, Anda dapat menggantinya dengan data yang baru
+                $("#daftar_mentor").html(response);
+            }
+        });
+    });
+});
+</script> -->
+
 
 

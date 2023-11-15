@@ -6,7 +6,7 @@ class Admin extends Controller {
     {
         $data['judul'] = 'Admin';
         $data['mentor'] = $this->model('Admin_model')->tampilDataMentor();
-        $this->view('admin/index', $data);
+        $this->view('admin/dashboard', $data);
         // $this->view('templates/sidebar');
         $this->view('templates/footer');
     }
@@ -37,7 +37,18 @@ class Admin extends Controller {
     }
     public function hapus()
     {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $id_mentor = $_POST['id_mentor'];
+            $result=$this->model('Admin_model')->hapusDataMentor($id_mentor);
+
+            if ($result) {
+                header('location: '.BASEURL.'/admin');
+            }
+        }    
+    }
+    public function edit()
+    {
 
     }
-
 }
