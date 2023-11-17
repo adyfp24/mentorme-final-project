@@ -11,7 +11,7 @@
   <nav class="bg-blue-700 border-gray-200 px-6 py-4 ">
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
       
-        <a class="flex items-center">
+        <a class="flex items-center pl-2">
           <span class="self-center text-xl sm:text-3xl font-bold whitespace-nowrap text-white ">mentorme.</span>
         </a>
        
@@ -76,17 +76,33 @@
                 Cari Mentor
               </a>
             </li>
-           
-            <li>
+           <?php if(isset($data['session'])): ?>
+            <li class="pl-36">
+              <!-- <a href="login" class="hidden hover:text-blue-700 mt-1 text-white md:block  hover:bg-gray-50 focus:ring-4 transition hover:scale-[106%] focus:ring-gray-300 font-medium ml-16 rounded-lg text-sm px-5 pl-5 py-1  focus:outline-none  border-gray-300  border-solid-2 border">
+                Login
+              </a> -->
+            </li>
+            <?php else: ?>
+              <li>
               <a href="login" class="hidden hover:text-blue-700 mt-1 text-white md:block  hover:bg-gray-50 focus:ring-4 transition hover:scale-[106%] focus:ring-gray-300 font-medium ml-16 rounded-lg text-sm px-5 pl-5 py-1  focus:outline-none  border-gray-300  border-solid-2 border">
                 Login
               </a>
             </li>
+            <?php endif; ?>
            
             <li>
-              <a href="register" class="text-blue-700 hidden md:block mt-2 bg-white hover:bg-white focus:ring-4 transition hover:scale-[103%] focus:ring-gray-300 hover:text-blue-700 font-medium rounded-lg text-sm px-5 py-1.5 mb-2 mr-2  focus:outline-none ">
-                Mulai Sekarang
-              </a>
+            <?php if (isset($data['session'])) : ?>
+              <form method="POST" action="<?=BASEURL.'/login/logoutUser'?>">
+                <button type="submit" class="text-blue-700 hidden md:block mt-2 bg-white hover:bg-white focus:ring-4 transition hover:scale-[103%] focus:ring-gray-300 hover:text-blue-700 font-medium rounded-lg text-sm px-5 py-1.5 mb-2 mr-2 focus:outline-none ">
+              Logout
+              </button>
+              </form>
+            <?php else : ?>
+        <!-- Jika session pengguna tidak ada (belum login) -->
+            <a href="register" class="text-blue-700 hidden md:block mt-2 bg-white hover:bg-white focus:ring-4 transition hover:scale-[103%] focus:ring-gray-300 hover:text-blue-700 font-medium rounded-lg text-sm px-5 py-1.5 mb-2 mr-2 focus:outline-none ">
+              Mulai Sekarang
+            </a>
+            <?php endif; ?>
             </li>
             </Link>
           </ul>
@@ -95,20 +111,20 @@
       <!-- {isDropdownOpen && ( -->
         <ul class=" text-white md:hidden flex flex-col p-5 list-none ml-3">
           <li class="mb-5" >
-            <Link to="/">Beranda</Link>
+             <a href="<?= BASEURL ?>">Beranda</a>  
           </li>
           <li class="mb-5" >
-            <Link to="/about">Tentang Kami</Link>
+          <a href="about">About</a> 
           </li>
           <li class="mb-5" >
-            <Link to="/jadwal">Jadwal</Link>
+          <a href="jadwal">Jadwal</a> 
           </li>
           <li class="mb-5" >
-            <Link to="/mentoring">Cari Mentor</Link>
+          <a href="mentoring">Cari Mentor</a> 
           </li>
           <li>
             <button class="text-white border px-4 bg-blue-700 rounded-md">
-              <Link to="/login">Login</Link>
+            <a href="login">Login</a> 
             </button>
           </li>
         </ul>

@@ -2,12 +2,14 @@
       <section class="bg-white p-4">
         <div class="grid max-w-screen-xl px-4 py-20 mb-4 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 md:ml-2">
           <div class="mr-auto place-self-center lg:col-span-7">
-            <h1 class="max-w-2xl md:mt-10 mb-5 text-5xl font-extrabold leading-none md:text-5xl xl:text-6xl ">
-            Partner Mentoring Penelitian Ilmiah Kamu!🕵️‍♂️
-            </h1>
-            <p class="max-w-2xl mb-2 pb-3 font-medium text-black lg:mb-8 md:text-lg lg:text-xl ">
-            Bersama mentor berpengalaman, asah pengetahuan kamu dalam bidang penelitian dan penulisan ilmiah. Mentoring menyeluruh dari awal hingga publikasi jurnal, dapatkan pengalaman mentorship penelitian ilmiah secara private one-on-one!
-            </p>
+          <h1 class="max-w-2xl md:mt-10 mb-5 text-5xl font-extrabold leading-none md:text-5xl xl:text-6xl transform transition-transform ease-in-out duration-500 translate-x-50">
+    Partner Mentoring Penelitian Ilmiah Kamu!🕵️‍♂️
+</h1>
+<p class="max-w-2xl mb-2 pb-3 font-medium text-black lg:mb-8 md:text-lg lg:text-xl transform transition-transform ease-in-out duration-500 translate-x-50">
+    Bersama mentor berpengalaman, asah pengetahuan kamu dalam bidang penelitian dan penulisan ilmiah. Mentoring menyeluruh dari awal hingga publikasi jurnal, dapatkan pengalaman mentorship penelitian ilmiah secara private one-on-one!
+</p>
+
+
             <Link to="/register">
             <a href="register"
               class=" inline-flex text-white items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 "

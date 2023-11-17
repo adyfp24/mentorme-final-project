@@ -7,7 +7,7 @@ class Admin extends Controller {
         $data['judul'] = 'Admin';
         $data['mentor'] = $this->model('Admin_model')->tampilDataMentor();
         $this->view('admin/dashboard', $data);
-        // $this->view('templates/sidebar');
+        //$this->view('templates/sidebar');
         $this->view('templates/footer');
     }
 
