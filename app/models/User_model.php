@@ -33,6 +33,39 @@ class User_model {
             return false; 
         }
     }
+    public function getUsernameById($id_user)
+{
+    global $conn;
+
+    try {
+        // Gunakan parameter terikat untuk mencegah SQL injection
+        $sql = "SELECT username FROM users WHERE id_user = ?";
+        $stmt = $conn->prepare($sql);
+
+        if (!$stmt) {
+            throw new Exception("Error dalam persiapan pernyataan SQL");
+        }
+
+        $stmt->bind_param("i", $id_user);
+        $stmt->execute();
+        $stmt->bind_result($username);
+
+        $usernames = [];
+
+        while ($stmt->fetch()) {
+            // Ambil nilai dari variabel yang di-bind
+            $usernames[] = $username;
+        }
+
+        $stmt->close();
+
+        return $usernames;
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
+
     public function registerUser($username, $password, $email, $nomor)
     {
         global $conn;  
@@ -52,6 +85,23 @@ class User_model {
             return false;
         }
     }
+    public function checkUsernameExists($username)
+{
+    global $conn;
+
+    $sql = "SELECT username FROM users WHERE username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $stmt->store_result();
+    
+    $numRows = $stmt->num_rows;
+    
+    $stmt->close();
+
+    return $numRows > 0;
+}
+
    
     public function getJadwal()
     {

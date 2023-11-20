@@ -1,5 +1,5 @@
 <div>
-       <footer class="bg-blue-700 w-full sm:p-6 ">
+       <footer class=" bg-blue-700 w-full sm:p-6 ">
         <div class="mx-auto max-w-screen-xl p-6">
           <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
@@ -26,7 +26,7 @@
                   </Link>
                   <li>
                   <Link to="/dashboardlogin">
-                    <a href="admin" class="hover:underline">
+                    <a href="?controller=admin" class="hover:underline">
                       Login Administrator
                     </a>
                     </Link>

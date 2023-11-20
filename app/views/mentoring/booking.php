@@ -31,7 +31,7 @@
 
         <div class=" w-full md:w-1/2 pl-2 pr-2 md:ml-4 md:mr-6 mb-6">
           <div class="w-full mt-4 m-auto max-w-screen-sm">
-          <form action="booking/bookingMentor" method="POST">
+          <form action="?controller=booking&method=bookingMentor" method="POST">
             <div class="p-4 border-blue-700 rounded-lg shadow-xl border-2 md:border md:rounded">
               <div class="flex py-2">
                 <p class="font-semibold text-gray-700 text-lg">Request Topik Mentoring</p>

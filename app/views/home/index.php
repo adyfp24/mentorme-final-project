@@ -11,7 +11,7 @@
 
 
             <Link to="/register">
-            <a href="register"
+            <a href="?controller=register"
               class=" inline-flex text-white items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 "
             >
               Mulai Sekarang
@@ -30,21 +30,30 @@
             </a>
             </Link>
             <Link to="/login">
+            <?php if(isset($data['session'])): ?>
             <a
-              href="login"
+              href="?controller=login&method=logoutUser"
+              class="xs:px-2 xs:py-1 inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-blue-700 border border-blue-700 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 "
+            >
+              Logout
+            </a>
+            <?php else: ?>
+              <a
+              href="?controller=login"
               class="xs:px-2 xs:py-1 inline-flex items-center justify-center px-7 py-3 text-base font-medium text-center text-blue-700 border border-blue-700 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 "
             >
               Login
             </a>
+            <?php endif; ?>
             </Link>
           </div>
-          <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-            <img src="../../assets/img/landing.png" alt="">
+          <div class=" lg:mt-0 lg:col-span-5 lg:flex">
+            <img src="../../assets/img/landing.png" alt="gamba">
           </div>
         </div>
       </section>
 
-      <section class="bg-white my-16 p-4">
+      <section class="bg-white my-1 p-4">
         <div class="py-8 lg:py-12 mx-auto max-w-screen-xl px-4">
           <h2 class="mb-8 lg:mb-10 text-xl font-bold tracking-tight leading-tight text-center text-gray-900 md:text-4xl">
             Didukung oleh
@@ -261,7 +270,7 @@
         </div>
       </section>
 
-      <section class="bg-white my-16  p-4">
+      <section class="bg-white mb-16  p-4">
         <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
           <div class="max-w-screen-md mb-8 lg:mb-16">
             <h2 class="mb-4 text-4xl font-extrabold text-gray-900">

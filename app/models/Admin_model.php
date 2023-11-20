@@ -38,50 +38,50 @@ class Admin_model{
             return false;
         }
     }
-    public function hapusDataMentor($id_mentor)
-{
-    global $conn;
+//     public function hapusDataMentor($id_mentor)
+// {
+//     global $conn;
 
-    try {
-        // Periksa referensi kunci asing sebelum penghapusan
-        $checkSql = "SELECT COUNT(*) FROM jadwal WHERE id_mentor = ?";
-        $checkStmt = $conn->prepare($checkSql);
+//     try {
+//         // Periksa referensi kunci asing sebelum penghapusan
+//         $checkSql = "SELECT COUNT(*) FROM jadwal WHERE id_mentor = ?";
+//         $checkStmt = $conn->prepare($checkSql);
 
-        if (!$checkStmt) {
-            throw new Exception("Error dalam persiapan pernyataan SQL");
-        }
+//         if (!$checkStmt) {
+//             throw new Exception("Error dalam persiapan pernyataan SQL");
+//         }
 
-        $checkStmt->bind_param("i", $id_mentor);
-        $checkStmt->execute();
-        $checkStmt->bind_result($count);
-        $checkStmt->fetch();
-        $checkStmt->close();
+//         $checkStmt->bind_param("i", $id_mentor);
+//         $checkStmt->execute();
+//         $checkStmt->bind_result($count);
+//         $checkStmt->fetch();
+//         $checkStmt->close();
 
-        if ($count > 0) {
-            throw new Exception("Tidak dapat menghapus mentor. Mentor terkait dengan entri jadwal yang ada.");
-        }
+//         if ($count > 0) {
+//             throw new Exception("Tidak dapat menghapus mentor. Mentor terkait dengan entri jadwal yang ada.");
+//         }
 
-        // Jika tidak ada referensi kunci asing, lanjutkan dengan penghapusan
-        $deleteSql = "DELETE FROM mentor WHERE id_mentor = ?";
-        $deleteStmt = $conn->prepare($deleteSql);
+//         // Jika tidak ada referensi kunci asing, lanjutkan dengan penghapusan
+//         $deleteSql = "DELETE FROM mentor WHERE id_mentor = ?";
+//         $deleteStmt = $conn->prepare($deleteSql);
 
-        if (!$deleteStmt) {
-            throw new Exception("Error dalam persiapan pernyataan SQL");
-        }
+//         if (!$deleteStmt) {
+//             throw new Exception("Error dalam persiapan pernyataan SQL");
+//         }
 
-        $deleteStmt->bind_param("i", $id_mentor);
+//         $deleteStmt->bind_param("i", $id_mentor);
 
-        if ($deleteStmt->execute()) {
-            $deleteStmt->close();
-            return true;
-        } else {
-            $deleteStmt->close();
-            return false;
-        }
-    } catch (Exception $e) {
-        echo "Error: " . $e->getMessage();
-    }
-}
+//         if ($deleteStmt->execute()) {
+//             $deleteStmt->close();
+//             return true;
+//         } else {
+//             $deleteStmt->close();
+//             return false;
+//         }
+//     } catch (Exception $e) {
+//         echo "Error: " . $e->getMessage();
+//     }
+// }
 
 //     public function hapusDataMentor($id_mentor)
 // {

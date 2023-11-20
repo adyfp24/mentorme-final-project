@@ -1,5 +1,5 @@
 <div class=' w-4/5 md:w-1/2 mx-auto p-5 mt-10 mb-10 rounded-xl shadow-xl'>
-      <form action="<?= BASEURL?>/register/regUser" method="POST" class='container' onSubmit={handleSubmit}>
+      <form action="?controller=register&method=regUser" method="POST" class='container' onSubmit={handleSubmit}>
         <div class='card-body'>
           <div class='card-header mb-5'>
             <h1 class='font-Epilogue font-semibold text-3xl'>Yuk, bikin akunmu 🤗</h1>
@@ -29,7 +29,7 @@
           <div class='card-footer mt-10'>
             <button type='submit' class='w-full bg-blue-700 h-10 rounded-lg font-semibold text-white'>Register</button>
             <div class="">
-            <p class='text-center mt-4 text-sm'>Sudah punya akun? <Link to='/login'><a href="login" class='text-blue-700 font-semibold'>Yuk, login!</a></Link></p>
+            <p class='text-center mt-4 text-sm'>Sudah punya akun? <Link to='/login'><a href="?controller=login" class='text-blue-700 font-semibold'>Yuk, login!</a></Link></p>
             </div>
           </div>
         </div>

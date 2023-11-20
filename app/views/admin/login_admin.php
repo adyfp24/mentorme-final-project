@@ -1,8 +1,8 @@
 <div class=' w-4/5 md:w-1/2 mx-auto p-5 mt-10 mb-10 rounded-xl shadow-xl'>
-      <form action="?controller=login&method=logUser" method="POST" class='container' >
+      <form class='container' >
         <div class='card-body'>
           <div class='card-header mb-5'>
-            <h1 class='font-Epilogue font-semibold text-3xl'>Halo, Yuk login dulu 😁</h1>
+            <h1 class='font-Epilogue font-semibold text-3xl'>Login Administrator 😁</h1>
           </div>
           <div class='card-body'>
             <div class='mb-4'>

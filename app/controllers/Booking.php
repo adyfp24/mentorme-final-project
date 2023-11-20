@@ -24,10 +24,10 @@ class Booking extends Controller{
             // var_dump($id_booking);
             $jadwalBaru = $this->model('User_model')->tambahJadwal($id_booking);
             if($jadwalBaru){
-                header('location:'.BASEURL.'/jadwal');
+                header('location:'.BASEURL.'?controller=jadwal');
             }
         }else{
-            echo 'login dulu';
+            header('location:'.BASEURL.'?controller=login');
         }
     }
 }

@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/Applications/XAMPP/xamppfiles/htdocs/fix-project/app/assets/js/script.js" ></script>
+    <script>
+      function toggleNavigation() {
+      var navList = document.getElementById('navList');
+      navList.classList.toggle('hidden');
+      }
+  </script>
     <title> <?= $data['judul']; ?></title>
   </head>
   <body>
@@ -17,7 +24,8 @@
        
         <div class="md:hidden justify-center ml-28 sm:ml-28 flex items-center">
           <button
-            onClick={toggleDropdown}
+            id="toogleButton"
+            onclick="toggleNavigation()"
             data-collapse-toggle="mobile-menu-2"
             type="button"
             class="inline-flex ml-10 p-2 text-sm rounded-lg lg:hidden bg-gray-100 focus:outline-none focus:ring-2 focus:ring-white  "
@@ -52,7 +60,7 @@
          
             <li>
               <a
-                href="about"
+                href="?controller=about"
                 class="block p-2 text-white  border-gray-100 rounded-md hover:bg-gray-50 lg:hover:bg-white lg:border-0 lg:hover:text-blue-700 lg:p-2 "
               >
                 Tentang Kami
@@ -61,7 +69,7 @@
             
             <li>
               <a
-                href="jadwal"
+                href="?controller=jadwal"
                 class="block p-2 text-white border-gray-100 rounded-md hover:bg-gray-50 lg:hover:bg-white lg:border-0 lg:hover:text-blue-700 lg:p-2  "
               >
                 Jadwal
@@ -70,7 +78,7 @@
             
             <li>
               <a
-                href="mentoring"
+                href="?controller=mentoring"
                 class="block p-2 mr-8 text-white  border-gray-100 rounded-md hover:bg-gray-50 lg:hover:bg-white lg:border-0 lg:hover:text-blue-700 lg:p-2  "
               >
                 Cari Mentor
@@ -84,7 +92,7 @@
             </li>
             <?php else: ?>
               <li>
-              <a href="login" class="hidden hover:text-blue-700 mt-1 text-white md:block  hover:bg-gray-50 focus:ring-4 transition hover:scale-[106%] focus:ring-gray-300 font-medium ml-16 rounded-lg text-sm px-5 pl-5 py-1  focus:outline-none  border-gray-300  border-solid-2 border">
+              <a href="?controller=login" class="hidden hover:text-blue-700 mt-1 text-white md:block  hover:bg-gray-50 focus:ring-4 transition hover:scale-[106%] focus:ring-gray-300 font-medium ml-16 rounded-lg text-sm px-5 pl-5 py-1  focus:outline-none  border-gray-300  border-solid-2 border">
                 Login
               </a>
             </li>
@@ -92,14 +100,14 @@
            
             <li>
             <?php if (isset($data['session'])) : ?>
-              <form method="POST" action="<?=BASEURL.'/login/logoutUser'?>">
+              <form method="POST" action="?controller=login&method=logoutUser">
                 <button type="submit" class="text-blue-700 hidden md:block mt-2 bg-white hover:bg-white focus:ring-4 transition hover:scale-[103%] focus:ring-gray-300 hover:text-blue-700 font-medium rounded-lg text-sm px-5 py-1.5 mb-2 mr-2 focus:outline-none ">
               Logout
               </button>
               </form>
             <?php else : ?>
         <!-- Jika session pengguna tidak ada (belum login) -->
-            <a href="register" class="text-blue-700 hidden md:block mt-2 bg-white hover:bg-white focus:ring-4 transition hover:scale-[103%] focus:ring-gray-300 hover:text-blue-700 font-medium rounded-lg text-sm px-5 py-1.5 mb-2 mr-2 focus:outline-none ">
+            <a href="?controller=register" class="text-blue-700 hidden md:block mt-2 bg-white hover:bg-white focus:ring-4 transition hover:scale-[103%] focus:ring-gray-300 hover:text-blue-700 font-medium rounded-lg text-sm px-5 py-1.5 mb-2 mr-2 focus:outline-none ">
               Mulai Sekarang
             </a>
             <?php endif; ?>
@@ -109,25 +117,41 @@
         </div>
       </div>
       <!-- {isDropdownOpen && ( -->
-        <ul class=" text-white md:hidden flex flex-col p-5 list-none ml-3">
+        <ul id="navList" class="hidden text-white md:hidden flex flex-col p-5 list-none ml-3">
           <li class="mb-5" >
              <a href="<?= BASEURL ?>">Beranda</a>  
           </li>
           <li class="mb-5" >
-          <a href="about">About</a> 
+          <a href="?controller=about">About</a> 
           </li>
           <li class="mb-5" >
-          <a href="jadwal">Jadwal</a> 
+          <a href="?controller=jadwal">Jadwal</a> 
           </li>
           <li class="mb-5" >
-          <a href="mentoring">Cari Mentor</a> 
+          <a href="?controller=mentoring">Cari Mentor</a> 
           </li>
+          <?php if(isset($data['session'])): ?>
           <li>
             <button class="text-white border px-4 bg-blue-700 rounded-md">
-            <a href="login">Login</a> 
+            <a href="?controller=login&method=logoutUser">Logout</a> 
             </button>
           </li>
+          <?php else: ?>
+            <li>
+            <button class="text-white border px-4 bg-blue-700 rounded-md">
+            <a href="?controller=login">Login</a> 
+            </button>
+          </li>
+          <?php endif; ?>
+
         </ul>
+
       <!-- )} -->
     </nav>
 
+    <script>
+  function toggleNavigation() {
+    var navList = document.getElementById('navList');
+    navList.classList.toggle('hidden');
+  }
+</script>

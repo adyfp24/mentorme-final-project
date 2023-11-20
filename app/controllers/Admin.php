@@ -10,6 +10,11 @@ class Admin extends Controller {
         //$this->view('templates/sidebar');
         $this->view('templates/footer');
     }
+    public function loginAdmin(){
+        $this->view('templates/header');
+        $this->view('admin/login_admin');
+        $this->view('templates/footer');
+    }
 
     public function tambah()
     {
@@ -29,7 +34,7 @@ class Admin extends Controller {
             $result = $this->model('Admin_model')->tambahDataMentor($nama_mentor, $hasil_penelitian, $minat_penelitian, $fee, $jadwal, $pendidikan, $sertifikasi, $deskripsi, $tempat, $spesialisasi, $judul);
 
             if ($result) {
-                header('location: '.BASEURL.'/admin');
+                header('location: '.BASEURL.'?controller=admin');
             }else{
                 echo 'data tidak berhasil diinput';
             }
@@ -43,7 +48,7 @@ class Admin extends Controller {
             $result=$this->model('Admin_model')->hapusDataMentor($id_mentor);
 
             if ($result) {
-                header('location: '.BASEURL.'/admin');
+                header('location: '.BASEURL.'?controller=admin');
             }
         }    
     }

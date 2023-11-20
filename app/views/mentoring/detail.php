@@ -21,7 +21,7 @@
           <div>
             <h2 class="text-2xl my-5 font-semibold text-gray-800 leading-tight">Fee Mentoring</h2>
             <div class="w-full flex">
-              <p class="bg-blue-700 rounded-md p-2 text-white hover:transform hover:scale-[102%] transition-transform transition-ease-in-out"><?=$detail['fee']?>p>
+              <p class="bg-blue-700 rounded-md p-2 text-white hover:transform hover:scale-[102%] transition-transform transition-ease-in-out"><?=$detail['fee']?></p>
             </div>
           </div>
           <div>

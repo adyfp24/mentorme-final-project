@@ -7,7 +7,7 @@ class Home extends Controller {
         $data['judul'] = 'Home';
         $data['session'] = $_SESSION['id_user'];
         $this->view('templates/header', $data);
-        $this->view('home/index');
+        $this->view('home/index',$data);
         $this->view('templates/footer');
     }
 }

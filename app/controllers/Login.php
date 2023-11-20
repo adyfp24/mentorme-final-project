@@ -30,7 +30,8 @@ class Login extends Controller{
             $password = $_POST['password'];
             $result = $this->model('User_model')->loginUser($username, $password);
             if(!$result){
-                echo 'login gagal';
+                echo '<script>alert("Username atau password yang anda masukkan salah");</script>';
+                echo '<script>window.location.href="'.BASEURL.'?controller=register";</script>';
             }else{
                 session_start();
                 header('location:'.BASEURL);
