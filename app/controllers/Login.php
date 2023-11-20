@@ -2,8 +2,14 @@
 
 class Login extends Controller{
     public function index(){
+		session_start();
         $data['judul'] = 'login'; 
         $data['session'] = $_SESSION['id_user'];
+      	if (isset($_SESSION['id_user'])) {
+            header('Location:'.BASEURL);
+            
+            exit();
+        }  
         $this->view('templates/header',$data);
         $this->view('auth/login');
         $this->view('templates/footer');
@@ -31,10 +37,10 @@ class Login extends Controller{
             $result = $this->model('User_model')->loginUser($username, $password);
             if(!$result){
                 echo '<script>alert("Username atau password yang anda masukkan salah");</script>';
-                echo '<script>window.location.href="'.BASEURL.'?controller=register";</script>';
+                echo '<script>window.location.href="'.BASEURL.'?controller=login";</script>';
             }else{
                 session_start();
-                header('location:'.BASEURL);
+                header('location:?controller=Home');
             }
         }
     }

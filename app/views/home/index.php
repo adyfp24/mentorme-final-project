@@ -1,5 +1,5 @@
 
-      <section class="bg-white p-4">
+<section class=" bg-white p-4">
         <div class="grid max-w-screen-xl px-4 py-20 mb-4 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 md:ml-2">
           <div class="mr-auto place-self-center lg:col-span-7">
           <h1 class="max-w-2xl md:mt-10 mb-5 text-5xl font-extrabold leading-none md:text-5xl xl:text-6xl transform transition-transform ease-in-out duration-500 translate-x-50">
@@ -11,7 +11,7 @@
 
 
             <Link to="/register">
-            <a href="?controller=register"
+            <a href="?controller=Register"
               class=" inline-flex text-white items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 "
             >
               Mulai Sekarang
@@ -31,15 +31,16 @@
             </Link>
             <Link to="/login">
             <?php if(isset($data['session'])): ?>
-            <a
-              href="?controller=login&method=logoutUser"
-              class="xs:px-2 xs:py-1 inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-blue-700 border border-blue-700 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 "
+            <form method="POST" action="?controller=Login&method=logoutUser" class="xs:px-2 xs:py-1 inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-blue-700 border border-blue-700 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100" >
+            <button
+              type="submit"
             >
               Logout
-            </a>
+              </button>
+            </form>
             <?php else: ?>
               <a
-              href="?controller=login"
+              href="?controller=Login"
               class="xs:px-2 xs:py-1 inline-flex items-center justify-center px-7 py-3 text-base font-medium text-center text-blue-700 border border-blue-700 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 "
             >
               Login
@@ -47,13 +48,13 @@
             <?php endif; ?>
             </Link>
           </div>
-          <div class=" lg:mt-0 lg:col-span-5 lg:flex">
-            <img src="../../assets/img/landing.png" alt="gamba">
+          <div class=" mt-10 lg:col-span-5 lg:flex">
+            <img src="https://iili.io/Jn5FL6Q.png" alt="">
           </div>
         </div>
       </section>
 
-      <section class="bg-white my-1 p-4">
+      <section class="bg-white my-16 p-4">
         <div class="py-8 lg:py-12 mx-auto max-w-screen-xl px-4">
           <h2 class="mb-8 lg:mb-10 text-xl font-bold tracking-tight leading-tight text-center text-gray-900 md:text-4xl">
             Didukung oleh
@@ -270,7 +271,7 @@
         </div>
       </section>
 
-      <section class="bg-white mb-16  p-4">
+      <section class="bg-white my-10  p-4">
         <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
           <div class="max-w-screen-md mb-8 lg:mb-16">
             <h2 class="mb-4 text-4xl font-extrabold text-gray-900">

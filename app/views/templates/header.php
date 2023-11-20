@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="/Applications/XAMPP/xamppfiles/htdocs/fix-project/app/assets/js/script.js" ></script>
+    <!-- <script src="/Applications/XAMPP/xamppfiles/htdocs/fix-project/app/assets/js/script.js" ></script> -->
     <script>
       function toggleNavigation() {
       var navList = document.getElementById('navList');

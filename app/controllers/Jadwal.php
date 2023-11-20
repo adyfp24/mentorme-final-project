@@ -7,10 +7,8 @@ class Jadwal extends Controller{
         // session_unset();
         // session_destroy();
         
-        // Periksa apakah session 'username' sudah ada
         if (!isset($_SESSION['id_user'])) {
-            // Jika tidak ada, redirect ke halaman login
-            header('Location: ' . BASEURL . '?controller=login'); // Gantilah 'login' dengan alamat halaman login Anda
+            header('Location: ' . BASEURL . '?controller=Login'); 
             exit();
         }else{
             session_start();
@@ -24,4 +22,23 @@ class Jadwal extends Controller{
             // $this->view('templates/footer');
         }
     }
-}
+    public function hapusJadwal()
+    {
+        if($_SERVER['REQUEST_METHOD']==='POST'){
+            $id_jadwal = $_POST['id_jadwal'];
+            try {
+                $result = $this->model('User_model')->hapusJadwalById($id_jadwal);
+            
+                if ($result) {
+                    header('location: ?controller=Jadwal');
+                } else {
+                    echo '<script>alert("jadwal gagal dihapus");</script>';
+                    echo '<script>window.location.href="'.BASEURL.'?controller=Jadwal";</script>';
+                }
+            } catch (Exception $e) {
+                echo "Terjadi pengecualian: " . $e->getMessage();
+            }
+            
+    }
+    }
+}    

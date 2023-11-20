@@ -240,4 +240,20 @@ class User_model {
             return false;
         }
     }
+    public function hapusJadwalById($id_jadwal) {
+        global $conn;
+    
+        $sql = "DELETE FROM jadwal WHERE id_jadwal=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id_jadwal);
+    
+        if ($stmt->execute()) {
+            $stmt->affected_rows;
+            $stmt->close();
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
 }

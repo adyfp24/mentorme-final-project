@@ -26,7 +26,7 @@
                   </Link>
                   <li>
                   <Link to="/dashboardlogin">
-                    <a href="?controller=admin" class="hover:underline">
+                    <a href="?controller=Admin&method=loginPage" class="hover:underline">
                       Login Administrator
                     </a>
                     </Link>
@@ -138,5 +138,28 @@
         </div>
       </footer>
     </div> 
+
+<script>
+$(document).ready(function () {
+        
+        function loadMentorData() {
+            $.ajax({
+                url: '?controller=Mentoring',
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                  
+                    console.log(data);
+                },
+                error: function () {
+                    console.log('Error fetching mentor data.');
+                }
+            });
+        }
+
+        loadMentorData();
+    });
+</script>
+
   </body>
 </html>
