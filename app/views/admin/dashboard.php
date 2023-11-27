@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <title> <?= $data['judul']; ?></title>
 </head>
 <body>
 <div>
-        <nav class="border-gray-200 fixed z-30 w-full">
+        <nav class="border-gray-200 fixed z-10 w-full">
             <div class="px-3 py-3 lg:px-5 lg:pl-3">
                 <div class="flex items-center h-16 bg-blue-700 rounded-lg justify-between">
                     <div class="flex items-center justify-start">
@@ -35,7 +35,7 @@
         </nav>  
 
         <div>
-    <aside class="fixed z-20 h-full top-0 left-0 pt-16 flex lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75">
+    <aside class="fixed z-20 h-full top-0 left-0 pt-20 flex lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75">
     <div class="relative flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white pt-0">
         <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
         <div class="flex-1 px-3 bg-white divide-y space-y-1">
@@ -67,7 +67,7 @@
             </ul>
             <Link to='/'>
             <div class="space-y-2 pt-2">
-                <form action="?controller=Admin&method=logoutAdmin">
+                <form method="POST" action="?controller=Admin&method=logoutAdmin">
                 <button type="sumbit" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2">
                     <svg class='w-6 h-6 text-gray-500' viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M48.86 5.62695H21.89C20.1696 5.6296 18.5203 6.31419 17.3038 7.53073C16.0872 8.74727 15.4027 10.3965 15.4 12.1169V25.597H23.38C23.3887 24.0243 24.0176 22.5186 25.13 21.407C26.2529 20.279 27.7772 19.6424 29.3688 19.6367C30.9603 19.6311 32.4892 20.257 33.62 21.377L39.61 27.3369C39.62 27.3469 39.62 27.3469 39.62 27.3569C39.9257 27.6633 40.1973 28.002 40.43 28.3669C40.5396 28.538 40.6398 28.7149 40.73 28.8969L40.737 28.912C40.6453 28.7245 40.5428 28.5425 40.43 28.3669C40.5474 28.553 40.6545 28.7452 40.751 28.9429C40.807 29.0429 40.851 29.1549 40.896 29.2619C40.9779 29.4461 41.0493 29.6347 41.11 29.8269C41.0534 29.644 40.9867 29.4644 40.91 29.2889C40.932 29.3419 40.962 29.389 40.982 29.447C41.032 29.577 41.072 29.6969 41.112 29.8269C41.2931 30.3994 41.3842 30.9965 41.382 31.597C41.3826 32.1834 41.295 32.7666 41.122 33.3269C41.0737 33.5151 41.0102 33.6991 40.932 33.877C40.8589 34.0582 40.7754 34.2352 40.682 34.407C40.5916 34.5792 40.4915 34.7462 40.382 34.907C40.1627 35.2432 39.9079 35.555 39.622 35.8369L33.642 41.847C33.0843 42.4092 32.4207 42.8551 31.6894 43.1589C30.9581 43.4628 30.1739 43.6185 29.382 43.6169C27.7973 43.6196 26.2761 42.9939 25.152 41.877C24.0247 40.7531 23.3884 39.2287 23.382 37.6369V37.597H15.402V51.067C15.402 52.7891 16.0854 54.4409 17.3022 55.6596C18.5191 56.8783 20.1698 57.5643 21.892 57.567H48.862C50.5842 57.5643 52.2349 56.8783 53.4517 55.6596C54.6685 54.4409 55.352 52.7891 55.352 51.067V12.1169C55.3493 10.3962 54.6645 8.74662 53.4475 7.53003C52.2305 6.31343 50.5808 5.62907 48.86 5.62695Z" fill="#4C68C4"/>
@@ -340,7 +340,7 @@
                         <td class="px-6 py-4">
                         <div class="flex gap-4">
 
-                            <form action="<?= BASEURL ?>/admin/hapus" method="POST">
+                            <form action="?controller=admin&method=hapus" method="POST">
                                 <input type="hidden" name="id_mentor" value="<?= $mentor['id_mentor'] ?>">
                                 <button onClick="">
                                     <a x-data="{ tooltip: 'Delete' }" href="">
@@ -363,25 +363,28 @@
                                 </button>
                             </form>
                         
-                            <button>
-                                <a x-data="{ tooltip: 'Edit' }" href="#">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="1.5"
-                                    stroke="currentColor"
-                                    class="h-6 w-6"
-                                    x-tooltip="tooltip"
-                                >
-                                    <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
-                                    />
-                                </svg>
-                                </a>
+                            <form action="" method="POST">
+                                <input type="hidden" name="id_mentor" value="<?= $mentor['id_mentor'] ?>">
+                                <button id="editButton" type="submit">
+                                    <a x-data="{ tooltip: 'Edit' }" href="">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="1.5"
+                                            stroke="currentColor"
+                                            class="h-6 w-6"
+                                            x-tooltip="tooltip"
+                                        >
+                                            <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+                                            />
+                                        </svg>
+                                    </a>
                             </button>
+                            </form>
                             </Link>
                         </div>
                         </td>
@@ -394,49 +397,98 @@
         </div>
     </div>
 
+    <div id="editModal" class="fixed inset-0 bg-black bg-opacity-75 overflow-y-auto">
+    <div class="flex mt-14 mb-14 items-center justify-center min-h-screen">
+        <div class="bg-white w-1/2 p-6 rounded shadow-lg">
+            <!-- Edit form goes here -->
+            <h2 class="text-2xl font-bold mb-4">Edit Mentor</h2>
+            
+                <form action="?controller=admin&method=update" method="POST">
+            
+                <input type="hidden" name="id_mentor" value="<?php echo $mentor['id_mentor']; ?>">
+                <label for="nama_mentor" class="block text-sm font-semibold mb-1">Nama Mentor:</label>
+                <input type="text" name="nama_mentor" value="<?php echo $mentor['nama_mentor']; ?>" class="w-full border px-3 py-2 mb-3">
+            
+                <label for="hasil_penelitian" class="block text-sm font-semibold mb-1">Hasil Penelitian:</label>
+                <input type="text" name="hasil_penelitian" value="<?php echo $mentor['hasil_penelitian']; ?>" class="w-full border px-3 py-2 mb-3">
+
+                <label for="minat_penelitian" class="block text-sm font-semibold mb-1">Minat Penelitian:</label>
+                <input type="text" name="minat_penelitian" value="<?php echo $mentor['minat_penelitian']; ?>" class="w-full border px-3 py-2 mb-3"> 
+
+                <label for="fee" class="block text-sm font-semibold mb-1">Fee:</label>
+                <input type="text" name="fee" value="<?php echo $mentor['fee']; ?>" class="w-full border px-3 py-2 mb-3"> 
+
+                <label for="jadwal" class="block text-sm font-semibold mb-1">Jadwal:</label>
+                <input type="text" name="jadwal" value="<?php echo $mentor['jadwal']; ?>" class="w-full border px-3 py-2 mb-3"> 
+
+                <label for="minat_penelitian" class="block text-sm font-semibold mb-1">Minat Penelitian:</label>
+                <input type="text" name="minat_penelitian" value="<?php echo $mentor['minat_penelitian']; ?>" class="w-full border px-3 py-2 mb-3"> 
+
+                <label for="pendidikan" class="block text-sm font-semibold mb-1">Pendidikan:</label>
+                <input type="text" name="pendidikan" value="<?php echo $mentor['pendidikan']; ?>" class="w-full border px-3 py-2 mb-3">
+
+                <label for="sertifikasi" class="block text-sm font-semibold mb-1">Sertifikasi:</label>
+                <input type="text" name="sertifikasi" value="<?php echo $mentor['sertifikasi']; ?>" class="w-full border px-3 py-2 mb-3">
+
+                <label for="deskripsi" class="block text-sm font-semibold mb-1">Deskripsi:</label>
+                <input type="text" name="deskripsi" value="<?php echo $mentor['deskripsi']; ?>" class="w-full border px-3 py-2 mb-3">
+
+                <label for="tempat" class="block text-sm font-semibold mb-1">Tempat:</label>
+                <input type="text" name="tempat" value="<?php echo $mentor['tempat']; ?>" class="w-full border px-3 py-2 mb-3">
+
+                <label for="spesialisasi" class="block text-sm font-semibold mb-1">Spesialisasi:</label>
+                <input type="text" name="spesialisasi" value="<?php echo $mentor['spesialisasi']; ?>" class="w-full border px-3 py-2 mb-3">
+
+                <label for="judul" class="block text-sm font-semibold mb-1">Judul:</label>
+                <input type="text" name="judul" value="<?php echo $mentor['judul']; ?>" class="w-full border px-3 py-2 mb-3">
+                
+                <div class="flex justify-end">
+                    <button type='submit' onClick="" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save Changes</button>
+                    <button type="button" id="cancelEditButton" class="ml-2 bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                </div>
+            </form>
+           
+        </div>
+    </div>
+</div>
 
 
     <script>
-$(document).ready(function () {
+
+    function cancelEdit() {
+        document.getElementById('editModal').classList.add('hidden');
+    }
+
+    function editModal() {
+        var editModal = document.getElementById('editModal');
+        editModal.classList.remove('hidden');
+        console.log('oceee');
+    }
+
+    document.getElementById('editButton').addEventListener('click', editModal);
+
+    document.getElementById('cancelEditButton').addEventListener('click', cancelEdit);
+
+    const id = 'test';
         
-        function loadMentorData() {
-            $.ajax({
-                url: '?controller=Mentoring',
-                type: 'POST',
-                dataType: 'json',
-                success: function (data) {
-                  
-                    console.log(data);
-                },
-                error: function () {
-                    console.log('Error fetching mentor data.');
-                }
-            });
-        }
-
-        loadMentorData();
-    });
-</script>
-
-
-<!-- <script>
-$(document).ready(function(){
-    $(".hapus-button").click(function(){
-        var id_mentor = $(this).data("id_mentor");
-
         $.ajax({
-            type: "POST",
-            url: "url_ke_controller_anda/hapus", // Sesuaikan dengan URL controller Anda
-            data: {id_mentor: id_mentor},
-            success: function(response){
-                // Perbarui tampilan tanpa mereload halaman
-                // Misalnya, jika Anda memiliki daftar mentor, Anda dapat menggantinya dengan data yang baru
-                $("#daftar_mentor").html(response);
+            url: '?controller=Admin&method=update',
+            data: {id : 'test'},
+            method: 'post',
+            dataType: 'json',
+            success: function(data) {
+                $('#nama').val(data.nama);
+                $('#nrp').val(data.nrp);
+                $('#email').val(data.email);
+                $('#jurusan').val(data.jurusan);
+                $('#id').val(data.id);
             }
         });
-    });
-});
-</script> -->
+
+    </script>
+
+
+
 
 
 

@@ -18,10 +18,10 @@ class Booking extends Controller{
         {   
             $id_user = $_SESSION['id_user'];
             $id_mentor = $_POST['id_mentor'];
-            $request_topik = $_POST['request_topik'];
+            $request_topik = htmlspecialchars($_POST['request_topik']);
             $booking = $this->model('User_model')->tambahBookingMentor($request_topik,$id_user,$id_mentor);
             $id_booking = $this->model('User_model')->getIdBookingBaru();
-            // var_dump($id_booking);
+            // $this->model('Admin_model')->hapusDataMentor($id_mentor);
             $jadwalBaru = $this->model('User_model')->tambahJadwal($id_booking);
             if($jadwalBaru){
                 header('location:'.BASEURL.'?controller=jadwal');

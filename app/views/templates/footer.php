@@ -140,25 +140,104 @@
     </div> 
 
 <script>
-$(document).ready(function () {
-        
-        function loadMentorData() {
-            $.ajax({
-                url: '?controller=Mentoring',
-                type: 'POST',
-                dataType: 'json',
-                success: function (data) {
-                  
-                    console.log(data);
-                },
-                error: function () {
-                    console.log('Error fetching mentor data.');
-                }
-            });
-        }
 
-        loadMentorData();
-    });
+  // console.log('ok');
+
+
+  // $("#login").on('click',function(){
+  //     var username_admin: $("#username_admin").val();
+  //     var password_admin: $("#password_admin").val();
+
+  //   $.ajax({
+  //     url: "?controller=Admin&method=coba",
+  //     type: "POST",
+  //     data: {username_admin:username_admin.password_admin:password_admin},
+  //     success: function(data){
+  //       console.log(data);
+  //       // if(r){
+  //       //   alert('Login gagal');
+  //       // } else {
+  //       //   alert('Login berhasil');
+  //       // }
+  //     },
+  //     error: function(xhr, status, error) {
+  //       console.error("AJAX request failed with status: " + status + ", error: " + error);
+  //     }
+  //   });
+  // });
+
+
+
+
+
+
+
+// $(document).ready(function(){
+//     $("#login").click(function(){
+
+//         var action = $("#lg-form").attr('action');
+//         var form_data = {
+//             username_admin: $("#username_admin").val(),
+//             password_admin: $("#password_admin").val(),
+//             is_ajax: 1
+//         };
+
+//         $.ajax({
+//             type: "POST",
+//             url: action,
+//             data: form_data,
+//             success: function(response) {
+//               var result = response.split('|');
+//     if (result[0] === "success") {
+//         $("#lg-form").slideUp('slow', function () {
+//             $("#message").html('<p class="success">You have logged in successfully!</p><p>Redirecting....</p>');
+//         });
+//     } else {
+//         $("#message").html('<p class="error">ERROR: ' + result[1] + '</p>');
+//     }
+// }
+
+//         });
+//         return false;
+//     });
+// });
+
+
+// AJAX login admin
+// $(document).ready(function () {
+//     $("#login").click(function () {
+
+//         var action = $("#lg-form").attr('action');
+//         var form_data = {
+//             username_admin: $("#username_admin").val(),
+//             password_admin: $("#password_admin").val(),
+//             is_ajax: 1
+//         };
+
+//         $.ajax({
+//             type: "POST",
+//             url: action,
+//             data: form_data,
+//             success: function (response) {
+//                 var result = response.split('|');
+//                 if (result === "success") {
+//                     $("#message").html('<p class="success">You have logged in successfully!</p><p>Redirecting....</p>');
+//                 } else {
+//                     $("#message").html('<p class="error">ERROR: ' + result[1] + '</p>');
+//                 }
+//             }
+
+//         });
+//         return false;
+//     });
+// });
+
+// AJAX register user
+
+
+
+
+
 </script>
 
   </body>

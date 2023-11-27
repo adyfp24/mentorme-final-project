@@ -32,8 +32,8 @@ class Login extends Controller{
             exit();
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $username = $_POST['username'];
-            $password = $_POST['password'];
+            $username = htmlspecialchars($_POST['username']);
+            $password = htmlspecialchars($_POST['password']);
             $result = $this->model('User_model')->loginUser($username, $password);
             if(!$result){
                 echo '<script>alert("Username atau password yang anda masukkan salah");</script>';

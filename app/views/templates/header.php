@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <!-- <script src="/Applications/XAMPP/xamppfiles/htdocs/fix-project/app/assets/js/script.js" ></script> -->
     <script>
       function toggleNavigation() {
@@ -86,9 +85,7 @@
             </li>
            <?php if(isset($data['session'])): ?>
             <li class="pl-36">
-              <!-- <a href="login" class="hidden hover:text-blue-700 mt-1 text-white md:block  hover:bg-gray-50 focus:ring-4 transition hover:scale-[106%] focus:ring-gray-300 font-medium ml-16 rounded-lg text-sm px-5 pl-5 py-1  focus:outline-none  border-gray-300  border-solid-2 border">
-                Login
-              </a> -->
+              
             </li>
             <?php else: ?>
               <li>

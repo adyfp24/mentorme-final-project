@@ -2,36 +2,17 @@
 
 class User_model {
     public function loginUser($username, $password) {
-        global $conn;
-    
-        $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
-        if ($stmt === false) {
-            die('Error in SQL statement preparation: ' . $conn->error);
-        }
-    
-        $stmt->bind_param("s", $username);
-    
-        if ($stmt->execute()) {
-            $result = $stmt->get_result();
-            
-            if ($result->num_rows > 0) {
-                $user = $result->fetch_assoc();
-                if ($password === $user['password']) {
-                    $stmt->close();
+        global $userRepo;
+        $user = $userRepo->loginUser($username); 
+            if($user == false){
+                return false;
+            }
+                if ($password === $user['password']) {   
                     $_SESSION['id_user'] = $user['id_user'];
                     return true;
                 } else {
-                    $stmt->close();
                     return false;
                 }
-            } else {
-                $stmt->close();
-                return false;
-            }
-        } else {
-            $stmt->close();
-            return false; 
-        }
     }
     public function getUsernameById($id_user)
 {

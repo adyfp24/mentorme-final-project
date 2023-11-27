@@ -49,7 +49,7 @@
             </Link>
           </div>
           <div class=" mt-10 lg:col-span-5 lg:flex">
-            <img src="https://iili.io/Jn5FL6Q.png" alt="">
+            <img src="/fix-project/app/assets/img/landing.png" alt="">
           </div>
         </div>
       </section>

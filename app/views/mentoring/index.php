@@ -50,12 +50,14 @@
           </div>
         <?php endforeach ?>
         <div clas="flex flex-col md:flex-row items-center justify-center mt-10">
-        <a href="#" class="px-4 py-2 mx-1 font-semibold text-gray-700 bg-gray-200 rounded-l hover:bg-gray-300">
+        <form action="?controller=" method="POST">
+        <button name="previous" class="px-4 py-2 mx-1 font-semibold text-gray-700 bg-gray-200 rounded-l hover:bg-gray-300">
           Previous
-        </a>
-        <a href="#" class="px-10 py-2 mx-1 font-semibold text-gray-700 bg-gray-200 rounded-r hover:bg-gray-300">
+        </button>
+        <button name="next" class="px-10 py-2 mx-1 font-semibold text-gray-700 bg-gray-200 rounded-r hover:bg-gray-300">
           Next
-        </a>
+        </button>
+        </form>
       </div>
         </div>
       </main>

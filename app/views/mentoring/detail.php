@@ -42,6 +42,12 @@
               <p class="bg-blue-700 hover:transform hover:scale-[102%] transition-transform transition-ease-in-out rounded-md p-2 text-white"><?=$detail['sertifikasi']?></p>
             </div>
           </div>
+          <div class="pt-6 flex justify-end">
+          <a href="?controller=Mentoring" class="px-2 py-2 text-gray-100 bg-blue-400 hover:bg-blue-600 flex w-1/6 items-center justify-center rounded">
+                kembali
+                <i class="bx bx-user-plus ml-2"></i>
+        </a>
+          </div>
         </div>
         <?php endforeach ?>
       </main>
