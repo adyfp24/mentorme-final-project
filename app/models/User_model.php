@@ -45,6 +45,52 @@ class User_model {
         echo "Error: " . $e->getMessage();
     }
 }
+    public function getDataUser($id_user){
+    global $conn;
+
+    try {
+        // Gunakan parameter terikat untuk mencegah SQL injection
+        $sql = "SELECT * FROM users WHERE id_user = ?";
+        $stmt = $conn->prepare($sql);
+
+        if (!$stmt) {
+            throw new Exception("Error dalam persiapan pernyataan SQL");
+        }
+
+        $stmt->bind_param("i", $id_user);
+        $stmt->execute();
+        
+        // Menggunakan bind_result untuk menentukan variabel yang akan menyimpan hasil
+        $result = $stmt->get_result();
+        
+        // Fetch hasil query ke dalam array asosiatif
+        $user = $result->fetch_assoc();
+
+        $stmt->close();
+
+        return $user;
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
+public function insertGambar($gambar, $id_user)
+    {
+        global $conn;
+        $sql = "UPDATE users SET gambar = ? WHERE id_user = ?";
+        $stmt = $conn->prepare($sql);
+
+        if (!$stmt) {
+            throw new Exception("Error in SQL statement preparation");
+        }
+
+        $stmt->bind_param("si", $gambar, $id_user);
+        $result = $stmt->execute();
+        $stmt->close();
+
+        return $result;
+    }
+
 
 
     public function registerUser($username, $password, $email, $nomor)
@@ -82,6 +128,24 @@ class User_model {
 
     return $numRows > 0;
 }
+public function tampilDataMentor($page = 1, $perPage = 6)
+{
+    global $conn;
+
+    $offset = ($page - 1) * $perPage;
+
+    $sql = "SELECT * FROM mentor LIMIT $perPage OFFSET $offset";
+    $result = $conn->query($sql);
+    $mentor = [];
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $mentor[] = $row;
+        }
+    }
+
+    return $mentor;
+}
 
    
     public function getJadwal()
@@ -117,22 +181,7 @@ class User_model {
             die('Error in SQL statement execution: ' . $conn->error);
         }
     }
-    // public function getIdBookingTerbesar()
-    // {
-    //     global $conn;
-
-    //     $sql = "SELECT * FROM jadwal WHERE id_booking = (SELECT MAX(id_booking) FROM jadwal)";
-    //     $result = $conn->query($sql);
-    //     $jadwal = [];
-
-    //     if ($result->num_rows > 0) {
-    //         while ($row = $result->fetch_assoc()) {
-    //             $jadwal[] = $row;
-    //     }
-    // }
-
-    // return $jadwal;
-    // }
+    
     public function getBookingMentor($id_mentor)
     {
         global $conn;
@@ -168,22 +217,14 @@ class User_model {
     }
     public function tambahBookingMentor($request_topik,$id_user,$id_mentor)
     {
-        global $conn;  
-    
-        $sql = "INSERT INTO booking (request_topik, id_user, id_mentor)
-                VALUES (?, ?, ?)";
-    
-        $stmt = $conn->prepare($sql);
-    
-        $stmt->bind_param("sii", $request_topik,$id_user,$id_mentor);
-    
-        if ($stmt->execute()) {
-            $stmt->close();
-            return ;
-        } else {
-            $stmt->close();
+
+        global $userRepo;
+        $dataMentor = $userRepo->tambahBookingMentor($request_topik,$id_user,$id_mentor);
+        if($dataMentor == true){
+            return true;
+        }else{
             return false;
-        }
+        } 
     }
     public function getIdBookingBaru()
 {
@@ -236,5 +277,45 @@ class User_model {
             return false;
         }
     }
+    public function userExists($username)
+    {
+        global $conn;
+
+        $sql = "SELECT COUNT(*) as count FROM users WHERE username = ?";
+        $params = [$username];
+
+        // Assuming $conn is your mysqli connection object
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt === false) {
+            // Handle error
+            return false;
+        }
+
+        $stmt->bind_param("s", ...$params);
+        $stmt->execute();
+        $stmt->bind_result($count);
+        $stmt->fetch();
+        $stmt->close();
+        return $count > 0;
+    }
+
+    public function updatePassword($username, $newPassword)
+    {
+        global $conn;
+        $sql = "UPDATE users SET password = ? WHERE username = ?";
+        $stmt = $conn->prepare($sql);
+
+        if (!$stmt) {
+            throw new Exception("Error in SQL statement preparation");
+        }
+
+        $stmt->bind_param("ss", $newPassword, $username);
+        $result = $stmt->execute();
+        $stmt->close();
+
+        return $result;
+    }
+
     
 }

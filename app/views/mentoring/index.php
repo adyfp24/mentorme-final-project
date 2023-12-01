@@ -49,15 +49,24 @@
             </div>
           </div>
         <?php endforeach ?>
-        <div clas="flex flex-col md:flex-row items-center justify-center mt-10">
-        <form action="?controller=" method="POST">
-        <button name="previous" class="px-4 py-2 mx-1 font-semibold text-gray-700 bg-gray-200 rounded-l hover:bg-gray-300">
-          Previous
-        </button>
-        <button name="next" class="px-10 py-2 mx-1 font-semibold text-gray-700 bg-gray-200 rounded-r hover:bg-gray-300">
-          Next
-        </button>
+        <div class="flex flex-col md:flex-row items-center justify-center mt-4">
+        <form action="?controller=Mentoring&method=pagination" method="POST">
+      <?php
+        for ($i = 1; $i <= 11; $i++) {
+          echo '<button name="' . $i . '" type="submit" value="' . $i . '" class="rounded md:px-4 px-1 md:py-2 py-1 md:mx-1 mx-1 font-semibold text-gray-700 bg-gray-200';
+        
+        // Tambahkan kelas khusus untuk tombol pertama (rounded-l) dan terakhir (rounded-r)
+          if ($i == 1) {
+              echo ' rounded-l';
+          } elseif ($i == 11) {
+              echo ' rounded-r';
+          }
+
+          echo ' hover:bg-red-200">' . $i . '</button>';
+        }
+          ?>
         </form>
+
       </div>
         </div>
       </main>

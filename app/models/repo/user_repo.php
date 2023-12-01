@@ -27,4 +27,23 @@ class User_repo{
         $stmt->close();
         return false;
     }
+    public function tambahBookingMentor($request_topik,$id_user,$id_mentor)
+    {
+        global $conn;  
+    
+        $sql = "INSERT INTO booking (request_topik, id_user, id_mentor)
+                VALUES (?, ?, ?)";
+    
+        $stmt = $conn->prepare($sql);
+    
+        $stmt->bind_param("sii", $request_topik,$id_user,$id_mentor);
+    
+        if ($stmt->execute()) {
+            $stmt->close();
+            return ;
+        } else {
+            $stmt->close();
+            return false;
+        }
+    }
 }

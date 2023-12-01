@@ -16,7 +16,7 @@
             <!-- Edit form goes here -->
             <h2 class="text-2xl font-bold mb-4">Edit Mentor</h2>
             <?php foreach ($data['mentor'] as $mentor): ?>
-                <form action="?controller=admin&method=update" method="POST">
+                <form action="?controller=Admin&method=update" method="POST">
             
                 <input type="hidden" name="id_mentor" value="<?php echo $mentor['id_mentor']; ?>">
                 <label for="nama_mentor" class="block text-sm font-semibold mb-1">Nama Mentor:</label>

@@ -24,10 +24,10 @@ class Booking extends Controller{
             // $this->model('Admin_model')->hapusDataMentor($id_mentor);
             $jadwalBaru = $this->model('User_model')->tambahJadwal($id_booking);
             if($jadwalBaru){
-                header('location:'.BASEURL.'?controller=jadwal');
+                header('location:'.BASEURL.'?controller=Jadwal');
             }
         }else{
-            header('location:'.BASEURL.'?controller=login');
+            header('location:'.BASEURL.'?controller=Login');
         }
     }
 }

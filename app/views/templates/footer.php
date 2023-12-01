@@ -172,35 +172,35 @@
 
 
 
-// $(document).ready(function(){
-//     $("#login").click(function(){
+$(document).ready(function(){
+     $("#login").click(function(){
 
-//         var action = $("#lg-form").attr('action');
-//         var form_data = {
-//             username_admin: $("#username_admin").val(),
-//             password_admin: $("#password_admin").val(),
-//             is_ajax: 1
-//         };
+         var action = $("#lg-form").attr('action');
+         var form_data = {
+             username_admin: $("#username_admin").val(),
+             password_admin: $("#password_admin").val(),
+             is_ajax: 1
+         };
 
-//         $.ajax({
-//             type: "POST",
-//             url: action,
-//             data: form_data,
-//             success: function(response) {
-//               var result = response.split('|');
-//     if (result[0] === "success") {
-//         $("#lg-form").slideUp('slow', function () {
-//             $("#message").html('<p class="success">You have logged in successfully!</p><p>Redirecting....</p>');
-//         });
-//     } else {
-//         $("#message").html('<p class="error">ERROR: ' + result[1] + '</p>');
-//     }
-// }
+         $.ajax({
+             type: "POST",
+             url: action,
+             data: form_data,
+             success: function(response) {
+               var result = response.split('|');
+     if (result[0] === "success") {
+         $("#lg-form").slideUp('slow', function () {
+             $("#message").html('<p class="success">You have logged in successfully!</p><p>Redirecting....</p>');
+         });
+     } else {
+         $("#message").html('<p class="error">ERROR: ' + result[1] + '</p>');
+     }
+ }
 
-//         });
-//         return false;
-//     });
-// });
+         });
+         return false;
+     });
+ });
 
 
 // AJAX login admin

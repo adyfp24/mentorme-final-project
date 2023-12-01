@@ -11,6 +11,17 @@ class user_repo_mock{
             return false;
         } 
     }
+    public function tambahBookingMentor($request_topik,$id_user,$id_mentor){
+        if (
+            !empty($request_topik) &&
+            !empty($id_user) &&
+            !empty($id_mentor) 
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 $userRepo = new user_repo_mock();
@@ -28,25 +39,41 @@ class UserModelTest extends TestCase
     $this->assertTrue($result);
     }
 
-    public function testLoginCorrectUsername(){
+    public function testLoginWrongPassword(){
         $userModel = new User_model();
 
-        $username = 'wodikdism';
-        $password = '123';
+        $username = 'ady';
+        $password = 'jdjjd';
 
         $result = $userModel->loginUser($username, $password);
 
         $this->assertFalse($result);
     }
 
-    public function testLoginCorrectPassword(){
+    public function testLoginWrongUsername(){
         $userModel = new User_model();
 
-        $username = 'ady';
-        $password = '857845094';
+        $username = 'jscdm';
+        $password = '123';
 
         $result = $userModel->loginUser($username, $password);
 
+        $this->assertFalse($result);
+    }
+    public function testBookingMentorSuccess(){
+        $userModel = new User_model();
+        $request_topik = 'ingin membahas AI';
+        $id_user = '01';
+        $id_mentor = '28';
+        $result = $userModel->tambahBookingMentor($request_topik,$id_user,$id_mentor);
+        $this->assertTrue($result);
+    }
+    public function testBookingMentorFailed(){
+        $userModel = new User_model();
+        $request_topik = '';
+        $id_user = '';
+        $id_mentor = '';
+        $result = $userModel->tambahBookingMentor($request_topik,$id_user,$id_mentor);
         $this->assertFalse($result);
     }
 }

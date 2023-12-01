@@ -1,60 +1,37 @@
 <?php
 
 class Admin_model{
-
-    public function loginAdmin($username_admin, $password_admin)
-    {
-        global $conn;
-    
-        $stmt = $conn->prepare("SELECT * FROM admin WHERE username_admin = ?");
-        
-        if ($stmt === false) {
-            die('Error in SQL statement preparation: ' . $conn->error);
-        }
-
-        $stmt->bind_param("s", $username_admin);
-    
-        
-        if ($stmt->execute()) {
-            $result = $stmt->get_result();
-
-            if ($result->num_rows > 0) {
-                $admin = $result->fetch_assoc();
-    
-                if ($password_admin == $admin['password_admin']) {
-                    $stmt->close();
+    public function loginAdmin($username_admin, $password_admin) {
+        global $adminRepo;
+        $admin = $adminRepo->loginAdmin($username_admin); 
+            if($admin == false){
+                return false;
+            }
+                if ($password_admin === $admin['password_admin']) {   
                     $_SESSION['id_admin'] = $admin['id_admin'];
                     return true;
                 } else {
-                    $stmt->close();
                     return false;
                 }
-            } else {
-                $stmt->close();
-                return false;
-            }
-        } else {
-            die('Error in SQL statement execution: ' . $stmt->error);
-        }
     }
-    
 
-   public function tampilDataMentor()
-   {
-    global $conn;
+    public function tampilDataMentor()
+    {
+        global $conn;
 
-        $sql = "SELECT * FROM mentor";
+        $sql = "SELECT * FROM mentor ORDER BY id_mentor";
         $result = $conn->query($sql);
         $mentor = [];
-
+    
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $mentor[] = $row;
             }
         }
-
+    
         return $mentor;
     }
+    
 
     public function tambahDataMentor($nama_mentor, $hasil_penelitian, $minat_penelitian, $fee, $jadwal, $pendidikan, $sertifikasi, $deskripsi, $tempat, $spesialisasi, $judul)
     {

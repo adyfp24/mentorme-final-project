@@ -89,7 +89,7 @@ class Admin extends Controller {
         $id_mentor = $_POST['id_mentor'];
         $data['mentor'] = $this->model('Admin_model')->editDataMentor($id_mentor);
 
-        $this->view('admin/dashboard', $data);
+        $this->view('admin/editmentor', $data);
     }
     public function update()
     {

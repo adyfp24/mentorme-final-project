@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <!-- <script src="assets/js/script.js" ></script> -->
   <title> <?= $data['judul']; ?></title>
 </head>
 <body>
-<div>
+<div id="tampilData">
         <nav class="border-gray-200 fixed z-10 w-full">
             <div class="px-3 py-3 lg:px-5 lg:pl-3">
                 <div class="flex items-center h-16 bg-blue-700 rounded-lg justify-between">
@@ -88,43 +89,43 @@
             <div class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10"></div>
                 <div class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
                     <div>
-                        <form action="?controller=admin&method=tambah" method="POST" class='p-2'>
+                        <form method="POST" id="form-input" class="form-input p-2">
                         <div class='flex mt-2 justify-between'> 
                             <div class='px-2'>
                                 <p class='text-lg font-medium'>Nama Mentor</p>
-                                <input name="nama_mentor"  onChange="" placeholder='Altamis Fattah Atmaja, S.Kom., M.Kom.' required type="text" class='border w-56 rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
+                                <input name="nama_mentor" id="nama_mentor"  onChange="" placeholder='Altamis Fattah Atmaja, S.Kom., M.Kom.' required type="text" class='border w-56 rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
                             </div>
                             <div class='px-2'>
                                 <p class='text-lg font-medium'>Spesialisasi Keilmuwan</p>
-                                <input name="spesialisasi"  onChange="" placeholder='IT' required type="text" class='border w-56 rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
+                                <input name="spesialisasi" id="spesialisasi"  onChange="" placeholder='IT' required type="text" class='border w-56 rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
                             </div>
                             <div class='px-2'>
                                 <p class='text-lg font-medium'>Fee Mentoring</p>
-                                <input name="fee"  onChange="" required type="text" placeholder='35000' class='border w-56 rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
+                                <input name="fee" id="fee" onChange="" required type="text" placeholder='35000' class='border w-56 rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
                             </div>
                             <div class='px-2'>
                                 <p class='text-lg font-medium'>Minat Penelitian</p>
-                                <input name="minat_penelitian"  onChange="" placeholder='Software Engineering' required type="text" class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
+                                <input name="minat_penelitian" id="minat_penelitian" onChange="" placeholder='Software Engineering' required type="text" class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
                             </div>                            
                         </div>
                         <div class='px-2 pt-4 mb-5'>
                             <p class='text-lg font-medium'>Sertifikasi</p>
-                            <input name="sertifikasi"  onChange="" placeholder='Dicoding Laos Academy, Informatika Universitas Jember, dan BuildWithAngga' required type="text" class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
+                            <input name="sertifikasi" id="sertifikasi"  onChange="" placeholder='Dicoding Laos Academy, Informatika Universitas Jember, dan BuildWithAngga' required type="text" class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
                         </div>
                         <div class='flex justify-between gap-1'> 
                             <div class='px-2 w-1/2'>
                                 <p class='text-lg font-medium'>Jadwal</p>
-                                <input name="jadwal"  onChange="" placeholder='Jumat, 25 Oktober 2023 / 10.00 - 11.00 WIB' type="text" class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
+                                <input name="jadwal" id="jadwal"  onChange="" placeholder='Jumat, 25 Oktober 2023 / 10.00 - 11.00 WIB' type="text" class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
                             </div>                    
                             <div class='px-2 w-1/2'>
                                 <p class='text-lg font-medium'>Tempat Mentoring</p>
-                                <input name="tempat"  onChange="" type="text" placeholder="https://unej-id.zoom.us/j/94642770465#success" class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
+                                <input name="tempat" id="tempat" onChange="" type="text" placeholder="https://unej-id.zoom.us/j/94642770465#success" class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
                             </div>                            
                         </div>
                         <div class='flex mt-2 justify-between mb-4'> 
                             <div class='px-2 pt-2 w-full'>
                                 <p class='text-lg font-medium'>Judul Mentoring</p>
-                                <input name="judul" required onChange="" type="text" placeholder="Masukkan judul mentoring..." class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
+                                <input name="judul" id="judul" required onChange="" type="text" placeholder="Masukkan judul mentoring..." class='border w-full rounded-md px-2 h-10 text-sm font-medium border-blue-200'/>
                             </div>
                         </div>
                         <div class="w-full px-2 mx-auto mt-5">
@@ -174,7 +175,7 @@
                             </div>
                             <div class="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">
                                 <label for="editor" class="sr-only">Publish post</label>
-                                <textarea name="deskripsi" onChange="" id="editor" rows="8" class="block px-0 w-full text-sm text-gray-800 font-medium bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Masukkan deskripsi mentor..." required></textarea>
+                                <textarea name="deskripsi" onChange="" id="deskripsi" rows="8" class="block px-0 w-full text-sm text-gray-800 font-medium bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Masukkan deskripsi mentor..." required></textarea>
                             </div>
                             </div>
                             <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
@@ -226,7 +227,7 @@
                             </div>
                             <div class="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">
                                 <label for="editor" class="sr-only">Publish post</label>
-                                <textarea name="pendidikan"  id="editor" rows="8" class="block px-0 w-full text-sm text-gray-800 font-medium bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Masukkan pendidikan mentor..." required></textarea>
+                                <textarea name="pendidikan"  id="pendidikan" rows="8" class="block px-0 w-full text-sm text-gray-800 font-medium bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Masukkan pendidikan mentor..." required></textarea>
                             </div>
                             </div>
                             <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
@@ -278,20 +279,20 @@
                             </div>
                             <div class="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">
                                 <label for="editor" class="sr-only">Publish post</label>
-                                <textarea name="hasil_penelitian" onChange="" id="editor" rows="8" class="block px-0 w-full text-sm font-medium text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Masukkan hasil penelitian mentor..." required></textarea>
+                                <textarea name="hasil_penelitian" onChange="" id="hasil_penelitian" rows="8" class="block px-0 w-full text-sm font-medium text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Masukkan hasil penelitian mentor..." required></textarea>
                             </div>
                             </div>
                             <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
                         </div>
-                        <div class='flex justify-center px-2'>
-                            <button onClick="" type='submit' class='bg-blue-700 h-8 w-full rounded-lg px-3 text-sm font-semibold text-white'>Simpan</button>
+                        <div class='flex justify-center px-4'>
+                            <a id="tombol-simpan" class='flex justify-center bg-blue-700 h-8 w-full rounded-lg px-4 pt-2 text-sm font-semibold text-white'>Simpan</a>
                         </div>
                     </form>
                 </div>
                 
                 <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md mt-5 mx-2">
 
-                <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
+                <table class=" w-full border-collapse bg-white text-left text-sm text-gray-500">
                     <thead class="bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Nama</th>
@@ -338,9 +339,10 @@
                         </div>
                         </td>
                         <td class="px-6 py-4">
+                       
                         <div class="flex gap-4">
 
-                            <form action="?controller=admin&method=hapus" method="POST">
+                            <form action="?controller=Admin&method=hapus" method="POST">
                                 <input type="hidden" name="id_mentor" value="<?= $mentor['id_mentor'] ?>">
                                 <button onClick="">
                                     <a x-data="{ tooltip: 'Delete' }" href="">
@@ -363,9 +365,9 @@
                                 </button>
                             </form>
                         
-                            <form action="" method="POST">
+                            <form action="?controller=Admin&method=edit" method="POST">
                                 <input type="hidden" name="id_mentor" value="<?= $mentor['id_mentor'] ?>">
-                                <button id="editButton" type="submit">
+                                <button type="submit">
                                     <a x-data="{ tooltip: 'Edit' }" href="">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -397,7 +399,7 @@
         </div>
     </div>
 
-    <div id="editModal" class="fixed inset-0 bg-black bg-opacity-75 overflow-y-auto">
+    <div id="tampilModalUbah" class="hidden fixed inset-0 bg-black bg-opacity-75 overflow-y-auto">
     <div class="flex mt-14 mb-14 items-center justify-center min-h-screen">
         <div class="bg-white w-1/2 p-6 rounded shadow-lg">
             <!-- Edit form goes here -->
@@ -444,48 +446,59 @@
                 
                 <div class="flex justify-end">
                     <button type='submit' onClick="" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save Changes</button>
-                    <button type="button" id="cancelEditButton" class="ml-2 bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                    <button type="button" onclick="cancelEdit()"  id="cancelEditButton" class="ml-2 bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Cancel</button>
                 </div>
             </form>
            
         </div>
     </div>
 </div>
+<script>
+
+// function cancelEdit() {
+//     document.getElementById('tampilModalUbah').classList.add('hidden');
+// }
+
+// function editModal() {
+//     var editModal = document.getElementById('tampilModalUbah');
+//     editModal.classList.remove('hidden');
+// }
 
 
-    <script>
+// document.getElementById('editButton').addEventListener('click', editModal);
 
-    function cancelEdit() {
-        document.getElementById('editModal').classList.add('hidden');
-    }
+// document.getElementById('cancelEditButton').addEventListener('click', cancelEdit);
 
-    function editModal() {
-        var editModal = document.getElementById('editModal');
-        editModal.classList.remove('hidden');
-        console.log('oceee');
-    }
+//AJAX Create Admin
 
-    document.getElementById('editButton').addEventListener('click', editModal);
+$(document).ready(function(){
+    $("#tombol-simpan").click(function(){
+    var data = $('#form-input').serialize();
+    $.ajax({
+      type: 'POST',
+      url: "?controller=Admin&method=tambah",
+      data: data,
+      success: function() {
+        tampilkanData();
+      }
+    });
+   });
 
-    document.getElementById('cancelEditButton').addEventListener('click', cancelEdit);
+})
 
-    const id = 'test';
-        
-        $.ajax({
-            url: '?controller=Admin&method=update',
-            data: {id : 'test'},
-            method: 'post',
-            dataType: 'json',
-            success: function(data) {
-                $('#nama').val(data.nama);
-                $('#nrp').val(data.nrp);
-                $('#email').val(data.email);
-                $('#jurusan').val(data.jurusan);
-                $('#id').val(data.id);
-            }
-        });
-
-    </script>
+// AJAX Read Admin
+function tampilkanData() {
+    $.ajax({
+        type: 'GET',
+        url: "?controller=Admin",
+        success: function (data) {
+            // console.log(data);
+            $('#tampilData').html(data);
+        }
+    });
+}
+</script>
+   
 
 
 
